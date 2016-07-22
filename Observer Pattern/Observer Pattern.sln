@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{75A9AB4B-9D0C-08D9-0B85-B916CA1744AC}") = "Observer Pattern", "Assembly-CSharp.csproj", "{89CFCBFA-BEDC-C7D7-4D44-0E5405D956C8}"
+EndProject
+Project("{75A9AB4B-9D0C-08D9-0B85-B916CA1744AC}") = "Observer Pattern", "Assembly-CSharp-Editor.csproj", "{2B96C6DC-DC0D-0A28-9E0A-39F42C3B3CC3}"
+EndProject
+Project("{75A9AB4B-9D0C-08D9-0B85-B916CA1744AC}") = "Observer Pattern", "Assembly-UnityScript.unityproj", "{C1F07A26-8360-1EDB-1611-3B3604B348B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89CFCBFA-BEDC-C7D7-4D44-0E5405D956C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89CFCBFA-BEDC-C7D7-4D44-0E5405D956C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89CFCBFA-BEDC-C7D7-4D44-0E5405D956C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89CFCBFA-BEDC-C7D7-4D44-0E5405D956C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B96C6DC-DC0D-0A28-9E0A-39F42C3B3CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B96C6DC-DC0D-0A28-9E0A-39F42C3B3CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B96C6DC-DC0D-0A28-9E0A-39F42C3B3CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B96C6DC-DC0D-0A28-9E0A-39F42C3B3CC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1F07A26-8360-1EDB-1611-3B3604B348B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1F07A26-8360-1EDB-1611-3B3604B348B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1F07A26-8360-1EDB-1611-3B3604B348B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1F07A26-8360-1EDB-1611-3B3604B348B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
