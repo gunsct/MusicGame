@@ -11,6 +11,7 @@ public class HitBoxControl : MonoBehaviour {
 		}
 	}
 
+	//버튼 관리
 	public void OnLU(){hitBox[0].SetActive(true);}
 	public void OffLU(){hitBox[0].SetActive(false);}
 

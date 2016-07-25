@@ -165,6 +165,10 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
      <Compile Include="Assets\Script\ControlBox.cs" />
      <Compile Include="Assets\Script\HitBoxControl.cs" />
+     <Compile Include="Assets\Script\Manager\GameManager.cs" />
+     <Compile Include="Assets\Script\Manager\MemoryPool.cs" />
+     <Compile Include="Assets\Script\Manager\SceneManager.cs" />
+     <Compile Include="Assets\Script\Manager\SoundManager.cs" />
      <Compile Include="Assets\Script\Node.cs" />
      <Compile Include="Assets\StoreAsset\Tazo_fx\Script\BillBoard.cs" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
