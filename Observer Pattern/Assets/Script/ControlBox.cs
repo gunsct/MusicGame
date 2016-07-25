@@ -33,6 +33,9 @@ public class ControlBox : MonoBehaviour {
 
 	void Start()
 	{
+		//씬매니져 생성부
+		if(GameObject.Find("SceneManager") == null)
+			GameSceneManager.getInstance.Create ();
 		//사운드 스펙트럼을 일정 량으로 구분 나눔
 		angleSpd = 1.0f / fps;
 		freqData = new float[numOfSamples];

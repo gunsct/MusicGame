@@ -166,6 +166,8 @@
      <Compile Include="Assets\Script\ControlBox.cs" />
      <Compile Include="Assets\Script\HitBoxControl.cs" />
      <Compile Include="Assets\Script\Manager\GameManager.cs" />
+     <Compile Include="Assets\Script\Manager\InfoManager.cs" />
+     <Compile Include="Assets\Script\Manager\LoadingScene.cs" />
      <Compile Include="Assets\Script\Manager\MemoryPool.cs" />
      <Compile Include="Assets\Script\Manager\SceneManager.cs" />
      <Compile Include="Assets\Script\Manager\SoundManager.cs" />
