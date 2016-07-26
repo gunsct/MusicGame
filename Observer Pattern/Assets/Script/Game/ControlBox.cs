@@ -35,7 +35,7 @@ public class ControlBox : MonoBehaviour {
 	{
 		//씬매니져 생성부
 		if(GameObject.Find("SceneManager") == null)
-			GameSceneManager.getInstance.Create ();
+			GameSceneManager.getInstance.Create();
 		//사운드 스펙트럼을 일정 량으로 구분 나눔
 		angleSpd = 1.0f / fps;
 		freqData = new float[numOfSamples];
@@ -66,12 +66,13 @@ public class ControlBox : MonoBehaviour {
 
 		//초기 평균, 전체 스펙트럼 과 회전등 작업 시작 
 		StartCoroutine ("StartAvgFreqData");
-		StartCoroutine ("ChangeAngle");
+		//StartCoroutine ("ChangeAngle");
 		InvokeRepeating("check", 0.0f, angleSpd); // update at 15 fps
 	}
 
 	void Update(){
 		this. transform.Rotate(new Vector3(0,60.0f / angleSpd,0) * Time.deltaTime, Space.World);
+		//차후 회전속도는 따로 업데이트 프레임 내에서 360도 돌았을때 절정 10번찍었을때 이런식으로 바꿔보자
 	}
 
 	//스펙트럼 데이터를 뽑아 담아줌
@@ -227,9 +228,11 @@ public class ControlBox : MonoBehaviour {
 		avgFreqData = (band [1] + band[2] + band[3]) /4;
 		bChange = true;
 	}
-	IEnumerator ChangeAngle(){
-		yield return new WaitForSeconds (2.0f);
-		angle = 60 * Random.Range (-5, 6);
+	IEnumerator ChangeAngle(){//보류
+		yield return new WaitForSeconds (60.0f * angleSpd / angle);
+		int rand = Random.Range (-1, 2);
+		if(rand != 0)
+			angle = 60.0f * rand;
 		StartCoroutine ("ChangeAngle");
 	}
 	IEnumerator ChangeUnlock(){

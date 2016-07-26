@@ -5,6 +5,7 @@ public class Node : MonoBehaviour {
 	private GameObject ControlBox;
 	public Material[] materials = new Material[6];
 	private MemoryPool pool;
+	GameManager gameManager;
 	// Use this for initialization
 
 	void Start () {
@@ -12,6 +13,7 @@ public class Node : MonoBehaviour {
 		ControlBox = GameObject.Find ("ControlBox");
 
 		pool = ControlBox.GetComponent<ControlBox> ().pool;
+		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -25,7 +27,7 @@ public class Node : MonoBehaviour {
 	}
 
 	//충돌 후 메모리풀로 제거 관리
-	void RemoveNode(){
+	public void RemoveNode(){
 		this.GetComponent<Rigidbody> ().velocity = new Vector3 (0, 0, 0);
 		for (int i = 0; i < ControlBox.GetComponent<ControlBox> ().poolCnt; i++) {
 			if (ControlBox.GetComponent<ControlBox> ().Node [i] == this.gameObject)
@@ -36,10 +38,13 @@ public class Node : MonoBehaviour {
 		
 	void OnTriggerEnter(Collider _col){
 		if (_col.transform.tag.Equals ("PlayerHitBox")) {
+			//점수부분은 따로 처리
 			RemoveNode ();
 		}
 
 		if (_col.transform.tag.Equals ("PenaltyHitBox")) {
+			//패널티도 따로있는곳에서 씀
+			gameManager.ScoreCheck (0.3f);
 			RemoveNode ();
 		}
 	}
