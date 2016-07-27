@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof (AudioClip))]
 public class ControlBox : MonoBehaviour {
 	public int numOfSamples = 1024; //Min: 64, Max: 8192
 
@@ -21,6 +20,7 @@ public class ControlBox : MonoBehaviour {
 	private float angle = 60.0f;
 	private float angleSpd;
 	public float fps;//프레임단위로 스펙트럼 뽑아내는거 관리
+	private int changeCnt = 0;
 
 	private bool bChange = false;//프레임 전환 제어
 
@@ -71,7 +71,7 @@ public class ControlBox : MonoBehaviour {
 	}
 
 	void Update(){
-		this. transform.Rotate(new Vector3(0,60.0f / angleSpd,0) * Time.deltaTime, Space.World);
+		this. transform.Rotate(new Vector3(0,angle / angleSpd,0) * Time.deltaTime, Space.World);
 		//차후 회전속도는 따로 업데이트 프레임 내에서 360도 돌았을때 절정 10번찍었을때 이런식으로 바꿔보자
 	}
 
@@ -119,6 +119,15 @@ public class ControlBox : MonoBehaviour {
 				band[k] = 0;
 			}
 		}
+
+		changeCnt++;
+		if (changeCnt == 3) {
+			int rand = Random.Range (-1, 2);
+			if (rand != 0)
+				angle = 60.0f * rand;
+			changeCnt = 0;
+		}
+			
 	}
 
 	//노드 스포너 생성 60도 단위씩 회전
@@ -143,11 +152,11 @@ public class ControlBox : MonoBehaviour {
 	private GameObject SpawnCycle(int _num, float _bandwidth, Vector3 _pos){
 		switch (_num) {
 		case 0:
-			if (_bandwidth > avgFreqData / 30.0f)
+			if (_bandwidth > avgFreqData / 25.0f)
 				return pool.NewItem (_pos);
 			break;
 		case 1:
-			if(_bandwidth > avgFreqData / 3.0f)
+			if(_bandwidth > avgFreqData / 2.5f)
 				return pool.NewItem (_pos);
 			break;
 		case 2:
@@ -155,15 +164,15 @@ public class ControlBox : MonoBehaviour {
 				return pool.NewItem (_pos);
 			break;
 		case 3:
-			if(_bandwidth > avgFreqData / 8.0f)
+			if(_bandwidth > avgFreqData / 6.0f)
 				return pool.NewItem (_pos);
 			break;
 		case 4:
-			if(_bandwidth > avgFreqData / 10.0f)
+			if(_bandwidth > avgFreqData / 8.0f)
 				return pool.NewItem (_pos);
 			break;
 		case 5:
-			if(_bandwidth > avgFreqData / 40.0f)
+			if(_bandwidth > avgFreqData / 30.0f)
 				return pool.NewItem (_pos);
 			break;
 		}
@@ -177,37 +186,37 @@ public class ControlBox : MonoBehaviour {
 
 		if (_band <= avgFreqData) {
 			fps = 0.6f;
-			nodeSpd = 3.0f;
+			//nodeSpd = 2.0f;
 			ChangeStep (fps);
 		}
 		if (avgFreqData < _band && _band <= avgFreqData * 1.5f) {
-			fps = 0.8f;
-			nodeSpd = 3.2f;
+			fps = 0.75f;
+			//nodeSpd = 2.05f;
 			ChangeStep (fps);
 		}
 		if (avgFreqData * 1.5f < _band && _band <= avgFreqData * 2.0f) {
-			fps = 1.0f;
-			nodeSpd = 3.4f;
+			fps = 0.9f;
+			//nodeSpd = 2.1f;
 			ChangeStep (fps);
 		}
 		if (avgFreqData * 2.0f < _band && _band <= avgFreqData * 2.5f) {
-			fps = 1.2f;
-			nodeSpd = 3.6f;
+			fps = 1.05f;
+			//nodeSpd = 2.15f;
 			ChangeStep (fps);
 		}
 		if (avgFreqData * 2.5f < _band && _band <= avgFreqData * 3.0f) {
-			fps = 1.4f;
-			nodeSpd =3.8f;
+			fps = 1.2f;
+			//nodeSpd =2.2f;
 			ChangeStep (fps);
 		}
 		if (avgFreqData * 3.0f < _band && _band <= avgFreqData * 3.5f) {
-			fps = 1.6f;
-			nodeSpd = 4.0f;
+			fps = 1.35f;
+			//nodeSpd = 2.25f;
 			ChangeStep (fps);
 		}
 		if (avgFreqData * 3.5f < _band) {
-			fps = 2.0f;
-			nodeSpd = 4.4f;
+			fps = 1.6f;
+			//nodeSpd = 2.3f;
 			ChangeStep (fps);
 		}
 

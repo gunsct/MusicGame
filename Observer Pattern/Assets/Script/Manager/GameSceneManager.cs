@@ -18,12 +18,14 @@ public class GameSceneManager : MonoBehaviour {
 				instance = container.AddComponent (typeof(GameSceneManager)) as GameSceneManager;
 				container.AddComponent (typeof(InfoManager));
 				container.AddComponent (typeof(SoundManager));
+				container.AddComponent (typeof(AudioSource));
 			}
 			return instance;
 		}
 	}
 
 	public void Create(){
+		Screen.SetResolution (1920, 1080, true);
 		DontDestroyOnLoad (transform.gameObject); 
 	}
 
